@@ -1,1 +1,4 @@
- console.log("Initializing scratchpad...")
+
+
+console.log("Initializing scratchpad...");
+

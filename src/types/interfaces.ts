@@ -1,0 +1,6 @@
+
+
+export interface GIT_REQUEST_CONFIG {
+	REQUEST_TYPE: 'GET' | 'PUT' | 'PATCH' | 'DELETE',
+	RESPONSE_TYPE: 'RAW' | 'JSON'
+}

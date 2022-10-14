@@ -58,7 +58,7 @@ class GitRequest {
 	}
 
 
-	static parseResponseType(config: GIT_REQUEST_CONFIG) {
+	private static parseResponseType(config: GIT_REQUEST_CONFIG) {
 		switch(config.responseType) {
 			case 'RAW': {
 				return RESPONSE_RAW;

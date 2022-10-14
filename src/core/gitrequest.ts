@@ -10,11 +10,34 @@ class GitRequest {
 	static async execute(config: GIT_REQUEST_CONFIG) {
 
 		const url: string = this.stitchURL(config.endpoint);
-		const headers: AxiosRequestConfig =  this.generateHeaderPacket(config.token, config.responseType)
+		const resType = this.parseResponseType(config) as string;
+		const headers: AxiosRequestConfig =  this.generateHeaderPacket(config.token, resType)
 
-		const response: AxiosResponse = await axios.get(url, headers)
-		console.log(response.data)
-
+		try {
+			switch(config.requestType) {
+				case('GET'): {
+					const response:AxiosResponse = await axios.get(url, headers);
+					return response.data;
+				}
+				case('PUT'): {
+					const response: AxiosResponse = await axios.put(url, {}, headers);
+					return response.data;
+				}
+				case('DELETE'): {
+					const response: AxiosResponse = await axios.delete(url, headers);
+					return response.data;
+				}
+				case('PATCH'): {
+					const response: AxiosResponse = await axios.patch(url, {}, headers);
+					return response.data;
+				}
+				default: {
+					console.log('Incorrect request type');
+				}
+			}
+		} catch(error: any) {
+			console.log(error.message)
+		} 
 	}
 
 	private static stitchURL(endpoint: string) {

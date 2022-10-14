@@ -1,11 +1,14 @@
 import {GitRequest} from "../core/gitrequest";
+import {LOCAL_TOKEN} from "../util/secrets";
 
 console.log("Initializing scratchpad...");
 
 // Example to execute a git request
 GitRequest.execute({
 	endpoint: 'user/repos',
-	token: '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',
+	token: LOCAL_TOKEN,
 	requestType: 'GET',
-	responseType: 'JSON'
+	responseType: 'RAW'
+}).then(response => {
+	console.log(response)
 })

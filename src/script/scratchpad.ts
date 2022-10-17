@@ -8,7 +8,7 @@ GitRequest.execute({
 	endpoint: 'user/repos',
 	token: LOCAL_TOKEN,
 	requestType: 'GET',
-	responseType: 'RAW'
+	responseType: 'JSON'
 }).then(response => {
 	console.log(response)
 })
